@@ -2,32 +2,30 @@ CREATE TABLE main (
 	id serial PRIMARY KEY NOT NULL,
 	name varchar(100) NOT NULL,
 	desctiption text NOT NULL,
-	date_ins_upd date,
+	date_created timestamp without time zone,
+    date_updated timestamp without time zone,
 	department varchar(100) NOT NULL,
 	status varchar(100) NOT NULL,
-	deadline date,
+	deadline timestamp without time zone,
 	priority varchar(100) NOT NULL,
-	var int,
-	assignee jsonb,
+	ver bigint DEFAULT 0 NOT NULL,
+	assignee_id int,
 	commentary jsonb	
 );
 
 CREATE TABLE dep(
-	id int NOT NULL,
 	name varchar(100) PRIMARY KEY NOT NULL,
 	descript text NOT NULL
 );
 
 
 CREATE TABLE statuses(
-	id int NOT NULL,
 	name varchar(100) PRIMARY KEY NOT NULL,
 	descript text NOT NULL,
 	dep varchar(100) NOT NULL
 );
 
 CREATE TABLE priorities(
-	id int NOT NULL,
 	name varchar(100) PRIMARY KEY NOT NULL,
 	ordr int NOT NULL
 );
@@ -55,6 +53,9 @@ ADD FOREIGN KEY (status) REFERENCES statuses(name);
 --4.
 ALTER TABLE main
 ADD FOREIGN KEY (priority) REFERENCES priorities(name);
+--5.
+ALTER TABLE main
+ADD FOREIGN KEY (assignee_id) REFERENCES users(id);
 
 --INDEXES:
 
@@ -72,8 +73,3 @@ ON priorities (name);
 
 CREATE INDEX idx_users_id
 ON users (id);
-
-
-
-
-
