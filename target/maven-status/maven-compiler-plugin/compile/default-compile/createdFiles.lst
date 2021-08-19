@@ -1,0 +1,7 @@
+com\example\springJooq\tables\Dep.class
+com\example\springJooq\tables\records\DepRecord.class
+com\example\springJooq\Tables.class
+com\example\springJooq\Keys.class
+com\example\springJooq\DefaultCatalog.class
+com\example\springJooq\Public.class
+com\example\springJooq\SpringJooqApplication.class
